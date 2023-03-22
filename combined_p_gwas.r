@@ -33,6 +33,10 @@ negs <- core_p_values %>% dplyr::select(-c(to_add, subgen)) %>%
   arrange(dis) %>% mutate(rank = 1:n()) %>% filter(rank <= 10) %>% 
   inner_join(marks)
 
+##################
+#### Figure 4 ####
+##################
+
 ggplot(negs %>% filter(dis > 0), aes(POS+POS2, -log10(pvalue))) +
   geom_point(data = . %>% filter(subgen == "K"), aes(POS+POS2, -log10(pvalue)), shape = ".", alpha = 0.2, color = "grey50") +
   geom_point(data = . %>% filter(subgen == "N"), aes(POS+POS2, -log10(pvalue)), shape = ".", alpha = 0.2, color = "grey20") +
